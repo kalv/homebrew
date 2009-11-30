@@ -9,6 +9,6 @@ class RubyEnterpriseEdition <Formula
 
   def install
     ENV.gcc_4_2 # fails with LLVM
-    system "./installer --auto #{prefix} --no-tcmalloc"
+    system "./installer --auto #{prefix} --no-tcmalloc  --dont-install-useful-gems"
   end
 end
