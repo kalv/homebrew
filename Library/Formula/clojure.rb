@@ -1,25 +1,19 @@
 require 'formula'
 
 class Clojure <Formula
-  url 'http://clojure.googlecode.com/files/clojure_1.0.0.zip'
+  url 'http://clojure.googlecode.com/files/clojure-1.1.0.zip'
+  md5 '9c9e92f85351721b76f40578f5c1a94a'
   head 'git://github.com/richhickey/clojure.git'
   homepage 'http://clojure.org/'
-  md5 'e7a50129040df7fe52287006988ecbb2'
-  JAR = "clojure-1.0.0.jar"
+  JAR = "clojure.jar"
+
+  def script
+    DATA.read.gsub 'CLOJURE_JAR_PATH_PLACEHOLDER', prefix+JAR
+  end
 
   def install
     prefix.install JAR
-
-    # create helpful scripts to start clojure
-    bin.mkdir
-    clojure_exec = bin + 'clj'
-
-    script = DATA.read
-    script.sub! "CLOJURE_JAR_PATH_PLACEHOLDER", "#{prefix}/#{JAR}"
-
-    clojure_exec.write script
-
-    File.chmod(0755, clojure_exec)
+    (bin+'clj').write(script)
   end
 end
 
