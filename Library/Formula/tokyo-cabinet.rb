@@ -1,9 +1,9 @@
 require 'formula'
 
 class TokyoCabinet <Formula
-  url 'http://1978th.net/tokyocabinet/tokyocabinet-1.4.39.tar.gz'
+  url 'http://1978th.net/tokyocabinet/tokyocabinet-1.4.42.tar.gz'
   homepage 'http://1978th.net/tokyocabinet'
-  sha1 '0cc77e1eeea1e767d6ffbfd9a640602a'
+  sha1 'e46da0ef614f821b57564639cf15388df1c39fb5'
 
   def install
     system "./configure", "--prefix=#{prefix}", "--enable-fastest",
