@@ -6,7 +6,7 @@ require 'utils'
 ARGV.extend(HomebrewArgvExtension)
 
 HOMEBREW_VERSION = 0.6
-HOMEBREW_WWW = 'http://bit.ly/Homebrew'
+HOMEBREW_WWW = 'http://mxcl.github.com/homebrew/'
 
 if Process.uid == 0
   # technically this is not the correct place, this cache is for *all users*
@@ -36,6 +36,11 @@ MACOS_FULL_VERSION = `/usr/bin/sw_vers -productVersion`.chomp
 MACOS_VERSION = /(10\.\d+)(\.\d+)?/.match(MACOS_FULL_VERSION).captures.first.to_f
 
 HOMEBREW_USER_AGENT = "Homebrew #{HOMEBREW_VERSION} (Ruby #{RUBY_VERSION}-#{RUBY_PATCHLEVEL}; Mac OS X #{MACOS_FULL_VERSION})"
+
+
+RECOMMENDED_LLVM = 2206
+RECOMMENDED_GCC_40 = 5493
+RECOMMENDED_GCC_42 = (MACOS_VERSION >= 10.6) ? 5646 : 5577
 
 
 class ExecutionError <RuntimeError
